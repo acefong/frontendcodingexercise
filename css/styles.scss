@@ -1,0 +1,135 @@
+/* Imports */
+@import 'VarMixins';
+@import 'reset';
+
+html {
+	font-size: 62.5%;
+}
+body {
+	font-family: ChronoWebRegular, "Century Gothic", AppleGothic, Arial, sans-serif;
+	font-size: 1.6em;
+}
+a {
+	color: $blue;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+p {
+	margin-bottom: 10px;
+	line-height: 130%;
+}
+b {
+	font-weight: 700;
+}
+button {
+	height: 32px;
+	text-align: center;
+	background-color: #000;
+	color: #fff;
+	padding: 6px;
+	cursor: pointer;
+	border: 0 solid transparent;
+	font-weight: 700;
+	@include bgcolor-transition($blackish, 0.2s, ease);
+	@include border-radius(2px);
+	&:hover {
+		background-color: $lightblue;
+		@include bgcolor-transition($lightblue, 0.2s, ease);
+	}
+}
+input {
+	padding: 8px;
+	border: 1px solid #A6A6A6;
+	&:focus{
+		border: 1px solid $lightblue;
+	}
+}
+#overlay {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+	/* color with alpha channel */
+	background-color: rgba(0, 0, 0, 0.4); /* 0.4 = 40% opacity */
+
+	/* stretch to screen edges */
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 5;
+
+	@include prefix((
+		transition: opacity 1s ease
+		));
+}
+#container {
+	max-width: $contentWidth;
+	margin: 0 auto;
+	text-align: center;
+}
+/* MENU */
+.cur {
+	@extend b;
+	background-color: #dedede !important;
+}
+#nav-menu {
+	margin: 100px 0 50px 0;
+	background-color: #B2B2B2;
+	ul {
+		li {
+			display: inline-block;
+			padding: 5px;
+			font-size: 1.6em;
+			@include bgcolor-transition(#B2B2B2, 0.3s, ease)
+		}
+		li:hover {
+			@include bgcolor-transition(#dedede, 0.3s, ease)
+		}
+	}
+}
+/* END - MENU */
+/* CONTENT */
+.pageHeader {
+	font-size: 2.2em;
+	font-weight: 700;
+}
+/* END - CONTENT */
+/* SUBSCRIBE BOX */
+#subscribe-box {
+	opacity: 0;
+	width: 300px;
+	z-index: 100;
+	background-color: #fff;
+	border: 1px solid $grey;
+	/*Center*/
+	position: absolute;
+	margin: -50px 0 0 -125px;
+	left: 50%;
+	top: 25%;
+
+	@include prefix((
+		border-radius: 2px,
+		transform: scale(0.8),
+		transition: all 1s ease
+		));
+	@include box-shadow(3px, 3px, 15px, 0px, rgba(0,0,0,0.75));
+}
+.subscribe-content {
+	padding: 20px;
+}
+.box-content {
+	margin-bottom: 15px;
+}
+#subscribe-form {
+	button {
+		margin: 10px 10px 0 0;
+	}
+}
+.error {
+	border: 1px solid $red;
+}
+/* END - SUBSCRIBE BOX */
